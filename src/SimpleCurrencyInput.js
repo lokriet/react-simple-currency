@@ -1,4 +1,5 @@
 var React = require('react')
+var PropTypes = require('prop-types')
 
 class SimpleCurrencyInput extends React.Component {
   constructor(props) {
@@ -98,6 +99,7 @@ class SimpleCurrencyInput extends React.Component {
 				id={this.props.id}
         className={this.props.className}
         onBlur={this.props.onInputBlur}
+        onFocus={this.props.onInputFocus}
         onChange={this.onInputType}
         value={this.formattedRawValue(this.state.rawValue)}
         disabled={this.props.disabled}
@@ -126,18 +128,19 @@ const removeOccurrences = (from, toRemove) => {
 }
 
 SimpleCurrencyInput.propTypes = {
-  id: React.PropTypes.string,
-  autoFocus: React.PropTypes.bool,
-  delimiter: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  onInputChange: React.PropTypes.func,
-  onInputBlur: React.PropTypes.func,
-  precision: React.PropTypes.number,
-  readOnly: React.PropTypes.bool,
-  separator: React.PropTypes.string,
-  tabIndex: React.PropTypes.number,
-  unit: React.PropTypes.string,
-  value: React.PropTypes.number.isRequired
+  id: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  delimiter: PropTypes.string,
+  disabled: PropTypes.bool,
+  onInputChange: PropTypes.func,
+  onInputBlur: PropTypes.func,
+  onInputFocus: PropTypes.func,
+  precision: PropTypes.number,
+  readOnly: PropTypes.bool,
+  separator: PropTypes.string,
+  tabIndex: PropTypes.number,
+  unit: PropTypes.string,
+  value: PropTypes.number.isRequired
 }
 
 SimpleCurrencyInput.defaultProps = {
@@ -149,7 +152,8 @@ SimpleCurrencyInput.defaultProps = {
   disabled: false,
   autoFocus: false,
   onInputChange: () => {},
-  onInputBlur: () => {}
+  onInputBlur: () => {},
+  onInputFocus: () => {}
 }
 
 export default SimpleCurrencyInput
